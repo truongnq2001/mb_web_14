@@ -27,11 +27,12 @@ public class SanPham implements Comparable<SanPham>{
     private ArrayList<DanhGia> danhGia;
     private String created_at;
     private String updated_at;
+    private String hienthiKM;
 
     public SanPham() {
     }
 
-    public SanPham(int idSanPham, String tenSP, String hangDT, int pin, int ram, int rom, String cpu, String ktManHinh, String cameraTruoc, String cameraSau, int gia, ArrayList<HinhAnh> hinhAnh, ArrayList<DanhGia> danhGia, String created_at, String updated_at) {
+    public SanPham(int idSanPham, String tenSP, String hangDT, int pin, int ram, int rom, String cpu, String ktManHinh, String cameraTruoc, String cameraSau, int gia, ArrayList<HinhAnh> hinhAnh, ArrayList<DanhGia> danhGia, String created_at, String updated_at, String hienthiKM) {
         this.idSanPham = idSanPham;
         this.tenSP = tenSP;
         this.hangDT = hangDT;
@@ -47,6 +48,7 @@ public class SanPham implements Comparable<SanPham>{
         this.danhGia = danhGia;
         this.created_at = created_at;
         this.updated_at = updated_at;
+        this.hienthiKM = hienthiKM;
     }
 
     public ArrayList<DanhGia> getDanhGia() {
@@ -169,6 +171,14 @@ public class SanPham implements Comparable<SanPham>{
         this.updated_at = updated_at;
     }
 
+    public void setHienthiKM(String hienthiKM) {
+        this.hienthiKM = hienthiKM;
+    }
+
+    public String getHienthiKM() {
+        return hienthiKM;
+    }
+    
     public int trungBinhSoSao() {
 
         if (danhGia.size() == 0) {

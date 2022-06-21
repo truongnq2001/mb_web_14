@@ -53,10 +53,70 @@ public class SanPhamDAO extends DBContext{
             t1.themDanhGia(danhGia);
         }
     }
-    public ArrayList<SanPham> layTatCa(){
+    public ArrayList<SanPham> layTatCa(String thuonghieu, String sapxep, String khuyenmai, String gia){
         ArrayList<SanPham> list = new ArrayList<>();
         
         String sql = "select * from [Web_ban_dien_thoai].[dbo].[tblSanPham]";
+        sql += " inner join tblPhanLoai on tblSanPham.idSanPham = tblPhanLoai.idSanPham";
+       
+        if (gia != null){
+            if(gia.equals("duoi2trieu")){
+                sql += " where gia < 2000000";
+            }
+            if(gia.equals("tu2den4trieu")){
+                sql += " where gia >= 2000000 and gia < 4000000";
+            }
+            if(gia.equals("tu4den7trieu")){
+                sql += " where gia >= 4000000 and gia < 7000000";
+            }
+            if(gia.equals("tu7den13trieu")){
+                sql += " where gia >= 7000000 and gia < 13000000";
+            }
+            if(gia.equals("tren13trieu")){
+                sql += " where gia >= 13000000";
+            }
+        }
+  
+        if (gia == null && khuyenmai != null){
+            if(khuyenmai.equals("tragop")){
+                sql += " where loai = '" + khuyenmai +"'";
+            }
+            if(khuyenmai.equals("giamgia")){
+                sql += " where loai = '" + khuyenmai +"'";
+            }
+            if(khuyenmai.equals("moiramat")){
+                sql += " where loai = '" + khuyenmai +"'";
+            } 
+        }
+        
+        if (gia != null && khuyenmai != null){
+            if(khuyenmai.equals("tragop")){
+                sql += " and loai = '" + khuyenmai +"'";
+            }
+            if(khuyenmai.equals("giamgia")){
+                sql += " and loai = '" + khuyenmai +"'";
+            }
+            if(khuyenmai.equals("moiramat")){
+                sql += " and loai = '" + khuyenmai +"'";
+            } 
+        }
+       
+        if ((gia == null || khuyenmai == null) && thuonghieu != null){
+            sql += " where hang = '" + thuonghieu +"'";
+        } 
+        
+        if ((khuyenmai != null || gia != null) && thuonghieu != null){
+            sql += " and hang = '" + thuonghieu +"'";
+        } 
+        
+        if (sapxep != null){
+            if(sapxep.equals("giatangdan")){
+                sql += " order by gia ASC";
+            }
+            if(sapxep.equals("giagiamdan")){
+                sql += " order by gia DESC";
+            }
+        }
         
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -80,6 +140,7 @@ public class SanPhamDAO extends DBContext{
                 tmp.setUpdated_at(rs.getString("updated_at"));
                 DanhGiaDAO t1 = new DanhGiaDAO(); 
                 tmp.setDanhGia(t1.layTheoIdSanPham(tmp.getIdSanPham()));
+                tmp.setHienthiKM(rs.getString("hienthiKM"));
                 list.add(tmp);
             }
             

@@ -147,13 +147,14 @@
                 </div>
             </div>
         </div>
+        
         <div class="filter">
 
         </div>
         <div class="search-filter">
             <input type="text" placeholder="Nhập tên cần tìm...">
         </div>
-         <%
+        <%
             List<SanPham> list = (List<SanPham>) request.getAttribute("tatca");
             for (int num = 0; num <= list.size()/4; num ++) {
         %>
@@ -163,11 +164,16 @@
                      for (int i = 4*num; i<4*(num+1) && i<list.size(); i++) {
                  %>
                  <div class="card">
+                        <div class="product-promo-container">
+                            <div class="product-promo">
+                                <p><%= list.get(i).getHienthiKM() %></p>
+                            </div>
+                        </div>
                         <img src="<%= list.get(i).getHinhAnh().get(0).getPath()%>" style="width:100%">
                         <a href="chi_tiet_san_pham?id=<%= list.get(i).getIdSanPham()%>"><%= list.get(i).getTenSP()%></a>
                         </br>
                         </br>
-                        </br>                    
+                        </br>
                         <p class="price"><fmt:setLocale value="vi_VN"/><fmt:formatNumber value="<%= list.get(i).getGia()%>" type="currency"/></p>
                         <div class="ratingresult">
                             <%
@@ -355,13 +361,14 @@
                             html += `</div>`;
                             document.querySelector('.filter').innerHTML += html;
                         }
-
+                        
                         if (((thuongHieuActive !== null) || (giaActive !== null)
                                 || (khuyenMaiActive !== null)||(sapXepActive !== null))
                                 && (!document.querySelector('.delete-filter-container'))) {
+                            
                             let html = '';
                             html += '<div class="delete-filter-container">';
-                            html += '<a href="danh-muc-sp.html"><button class="delete-filter-btn">Xóa bộ lọc</button></a>';
+                            html += `<a href="danh_muc_sp"><button class="delete-filter-btn">Xóa bộ lọc</button></a>`;
                             html += '</div>';
                             document.querySelector('.filter').innerHTML += html;
                         }

@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/src/java/controller/Danh_muc_sp.java</file>
-            <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/web/css/index.css</file>
             <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/src/java/dal/SanPhamDAO.java</file>
             <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/web/Danh_muc_sp.jsp</file>
+            <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/web/sanphamAdmin.html</file>
+            <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/src/java/dal/PhanLoaiSpDAO.java</file>
+            <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/src/java/model/PhanLoaiSP.java</file>
             <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/src/java/controller/TrangChuSevrlet.java</file>
             <file>file:/C:/Web/Web_mb/Web_ban_dien_thoai/web/TrangChu.jsp</file>
         </group>

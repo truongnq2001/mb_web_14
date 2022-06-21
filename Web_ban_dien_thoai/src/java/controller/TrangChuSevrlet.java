@@ -61,10 +61,10 @@ public class TrangChuSevrlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PhanLoaiSpDAO pld = new PhanLoaiSpDAO();
-        PhanLoaiSP spmoi = pld.layTheoLoai("moi");
-        PhanLoaiSP spnoibat = pld.layTheoLoai("noi bat");
-        PhanLoaiSP sptragop = pld.layTheoLoai("tra gop 0%");
-        PhanLoaiSP spgiare = pld.layTheoLoai("gia re");
+        PhanLoaiSP spmoi = pld.layTheoLoai("moiramat");
+        PhanLoaiSP spnoibat = pld.layTheoLoai("noibat");
+        PhanLoaiSP sptragop = pld.layTheoLoai("tragop");
+        PhanLoaiSP spgiare = pld.layTheoLoai("giare");
         
 //       response.sendRedirect("index.html");
         request.setAttribute("spmoi", spmoi);

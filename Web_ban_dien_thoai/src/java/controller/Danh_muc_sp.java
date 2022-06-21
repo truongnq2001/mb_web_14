@@ -8,6 +8,7 @@ import dal.PhanLoaiSpDAO;
 import dal.SanPhamDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.PhanLoaiSP;
 import model.SanPham;
+
 
 /**
  *
@@ -62,8 +64,14 @@ public class Danh_muc_sp extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String thuonghieu = request.getParameter("thuong-hieu");
+        String sapxep = request.getParameter("sap-xep");
+        String khuyenmai = request.getParameter("khuyen-mai");
+        String gia = request.getParameter("gia");
         SanPhamDAO spd = new SanPhamDAO();
-        List<SanPham> list = spd.layTatCa();
+        List<SanPham> list = spd.layTatCa(thuonghieu, sapxep, khuyenmai, gia);
+//        List<SanPham> list_temp = new ArrayList<>(20);
+//        System.arraycopy(list, 0, list_temp, 0, 3);
         request.setAttribute("tatca", list);
         request.getRequestDispatcher("Danh_muc_sp.jsp").forward(request, response);
     }

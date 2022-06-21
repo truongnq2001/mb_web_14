@@ -14,6 +14,7 @@ public class PhanLoaiSP {
     private ArrayList<SanPham> sanPham;
     private String loai;
 
+
     public PhanLoaiSP() {
     }
 
@@ -37,6 +38,8 @@ public class PhanLoaiSP {
     public void setLoai(String loai) {
         this.loai = loai;
     }
+    
+
 
     
     
